@@ -84,7 +84,6 @@ final class TranslationView: UIView {
     }()
     
     weak var delegate: TranslationViewDelegate?
-    private var tapGestureRecognizer = UITapGestureRecognizer()
     
     init() {
         super.init(frame: .zero)
@@ -113,8 +112,9 @@ final class TranslationView: UIView {
             self?.delegate?.didTappedTranslateLanguageButton()
         }), for: .touchUpInside)
         
-        tapGestureRecognizer.addTarget(self, action: #selector(didTappedPauseImageView))
-        pauseImageView.addGestureRecognizer(tapGestureRecognizer)
+        pauseImageView.addGestureRecognizer(UITapGestureRecognizer(
+            target: self,
+            action: #selector(didTappedPauseImageView)))
     }
     
     @objc
