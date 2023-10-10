@@ -2,7 +2,7 @@
 //  SceneDelegate.swift
 //  Camera-Translate-App
 //
-//  Created by 조호준 on 2023/10/09.
+//  Created by Moon on 2023/10/09.
 //
 
 import UIKit
@@ -14,7 +14,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
         window = UIWindow(windowScene: windowScene)
-        window?.rootViewController = ViewController()
+        window?.rootViewController = TranslationViewController()
         window?.makeKeyAndVisible()
     }
 }

@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  Camera-Translate-App
 //
-//  Created by 조호준 on 2023/10/09.
+//  Created by Moon on 2023/10/09.
 //
 
 import UIKit
