@@ -96,10 +96,10 @@ extension TranslationViewController: DataScannerViewControllerDelegate {
             let bottomLeft = text.bounds.bottomLeft
             
             translatedTextLabel.frame = .init(
-                origin: .init(x: topLeft.x, y: padding + topLeft.y),
+                origin: .init(x: topLeft.x - 10, y: padding + topLeft.y - 10),
                 size: .init(
-                    width: topRight.x - topLeft.x,
-                    height: bottomLeft.y - topLeft.y))
+                    width: topRight.x - topLeft.x + 20,
+                    height: bottomLeft.y - topLeft.y + 20))
             
             translatedTextLabel.text = text.transcript
             
