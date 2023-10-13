@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		28899C802AD544D500708D7B /* TranslationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28899C7F2AD544D500708D7B /* TranslationView.swift */; };
+		289217C92AD8D77000BB6885 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289217C82AD8D77000BB6885 /* UIColor+.swift */; };
 		28C69FFA2AD4364200B4A8A9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C69FF92AD4364200B4A8A9 /* AppDelegate.swift */; };
 		28C69FFC2AD4364200B4A8A9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C69FFB2AD4364200B4A8A9 /* SceneDelegate.swift */; };
 		28C69FFE2AD4364200B4A8A9 /* TranslationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C69FFD2AD4364200B4A8A9 /* TranslationViewController.swift */; };
@@ -17,6 +18,7 @@
 
 /* Begin PBXFileReference section */
 		28899C7F2AD544D500708D7B /* TranslationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationView.swift; sourceTree = "<group>"; };
+		289217C82AD8D77000BB6885 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		28C69FF62AD4364200B4A8A9 /* Camera-Translate-App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Camera-Translate-App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		28C69FF92AD4364200B4A8A9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		28C69FFB2AD4364200B4A8A9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -78,6 +80,14 @@
 			path = Resource;
 			sourceTree = "<group>";
 		};
+		289978D52AD8CEEE00653C88 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				289217C82AD8D77000BB6885 /* UIColor+.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		28C69FED2AD4364200B4A8A9 = {
 			isa = PBXGroup;
 			children = (
@@ -97,6 +107,7 @@
 		28C69FF82AD4364200B4A8A9 /* Camera-Translate-App */ = {
 			isa = PBXGroup;
 			children = (
+				289978D52AD8CEEE00653C88 /* Extension */,
 				28899C7A2AD53C5600708D7B /* Application */,
 				28899C7B2AD53C6E00708D7B /* Model */,
 				28899C7C2AD53C7200708D7B /* View */,
@@ -181,6 +192,7 @@
 				28C69FFA2AD4364200B4A8A9 /* AppDelegate.swift in Sources */,
 				28899C802AD544D500708D7B /* TranslationView.swift in Sources */,
 				28C69FFC2AD4364200B4A8A9 /* SceneDelegate.swift in Sources */,
+				289217C92AD8D77000BB6885 /* UIColor+.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
