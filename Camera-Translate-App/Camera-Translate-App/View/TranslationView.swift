@@ -8,17 +8,28 @@
 import UIKit
 
 protocol TranslationViewDelegate: AnyObject {
-    func didTappedOriginalLanguageButton()
-    func didTappedSwitchLanguageButton()
-    func didTappedTranslateLanguageButton()
-    func didTappedPauseImageView()
+    func didTapOriginalLanguageButton(_ language: Language)
+    func didTapSwitchLanguageButton()
+    func didTapTranslateLanguageButton(_ language: Language)
+    func didTapPauseImageView()
 }
 
 final class TranslationView: UIView {
-    private let originalLanguageButton: UIButton = {
+    private lazy var originalLanguageButton: UIButton = {
         let button = UIButton()
-        button.setTitle("한국어", for: .normal)
-        button.titleLabel?.font = .preferredFont(forTextStyle: .title2)
+        button.menu = UIMenu(
+            children: [
+                UIAction(title: Language.korean.rawValue, handler: { _ in
+                    self.delegate?.didTapOriginalLanguageButton(.korean)
+                }),
+                UIAction(title: Language.english.rawValue, handler: { _ in
+                    self.delegate?.didTapOriginalLanguageButton(.english)
+                })
+            ])
+        button.changesSelectionAsPrimaryAction = true
+        button.showsMenuAsPrimaryAction = true
+        
+        button.titleLabel?.font = .preferredFont(forTextStyle: .title3)
         button.setImage(.init(systemName: "chevron.down"), for: .normal)
         button.tintColor = .black
         button.setTitleColor(.black, for: .normal)
@@ -28,18 +39,26 @@ final class TranslationView: UIView {
     
     private let switchLanguageButton: UIButton = {
         let button = UIButton()
-        button.setImage(.init(systemName: "arrow.left.arrow.right"), for: .normal)
-        button.tintColor = .black
-        button.layer.borderWidth = 1
-        button.layer.cornerRadius = 12
+        button.setImage(.init(named: "changeButton"), for: .normal)
+        button.imageView?.contentMode = .scaleAspectFit
         
         return button
     }()
     
-    private let translateLanguageButton: UIButton = {
+    private lazy var translateLanguageButton: UIButton = {
         let button = UIButton()
-        button.setTitle("영어", for: .normal)
-        button.titleLabel?.font = .preferredFont(forTextStyle: .title2)
+        button.menu = UIMenu(
+            children: [
+                UIAction(title: Language.english.rawValue, handler: { _ in
+                    self.delegate?.didTapOriginalLanguageButton(.english)
+                }),
+                UIAction(title: Language.korean.rawValue, handler: { _ in
+                    self.delegate?.didTapOriginalLanguageButton(.korean)
+                })
+            ])
+        button.changesSelectionAsPrimaryAction = true
+        button.showsMenuAsPrimaryAction = true
+        button.titleLabel?.font = .preferredFont(forTextStyle: .title3)
         button.setImage(.init(systemName: "chevron.down"), for: .normal)
         button.tintColor = .black
         button.setTitleColor(.black, for: .normal)
@@ -60,17 +79,15 @@ final class TranslationView: UIView {
     
     private let cameraView: UIImageView = {
         let imageView = UIImageView()
-        imageView.backgroundColor = .yellow
+        imageView.backgroundColor = .systemGray5
         
         return imageView
     }()
     
     private let pauseImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(systemName: "pause.circle")
-        imageView.tintColor = .black
-        imageView.layer.cornerRadius = 50
-        imageView.layer.backgroundColor = UIColor.white.cgColor
+        imageView.image = UIImage(systemName: "pause.rectangle.fill")
+        imageView.tintColor = .yellow1
         imageView.isUserInteractionEnabled = true
         
         return imageView
@@ -84,6 +101,7 @@ final class TranslationView: UIView {
     }()
     
     weak var delegate: TranslationViewDelegate?
+    private var isPaused = false
     
     init() {
         super.init(frame: .zero)
@@ -97,29 +115,30 @@ final class TranslationView: UIView {
     }
     
     private func setUpActions() {
-        originalLanguageButton.addAction(.init(
-            handler: { [weak self] _ in
-            self?.delegate?.didTappedOriginalLanguageButton()
-        }), for: .touchUpInside)
-        
         switchLanguageButton.addAction(.init(
             handler: { [weak self] _ in
-            self?.delegate?.didTappedSwitchLanguageButton()
-        }), for: .touchUpInside)
-        
-        translateLanguageButton.addAction(.init(
-            handler: { [weak self] _ in
-            self?.delegate?.didTappedTranslateLanguageButton()
-        }), for: .touchUpInside)
+                self?.delegate?.didTapSwitchLanguageButton()
+            }), for: .touchUpInside)
         
         pauseImageView.addGestureRecognizer(UITapGestureRecognizer(
             target: self,
-            action: #selector(didTappedPauseImageView)))
+            action: #selector(didTapPauseImageView)))
     }
     
     @objc
-    private func didTappedPauseImageView() {
-        self.delegate?.didTappedPauseImageView()
+    private func didTapPauseImageView() {
+        self.delegate?.didTapPauseImageView()
+        togglePauseImage(isPaused: self.isPaused)
+    }
+    
+    private func togglePauseImage(isPaused: Bool) {
+        if isPaused {
+            pauseImageView.image = UIImage(systemName: "pause.rectangle.fill")
+        } else {
+            pauseImageView.image = UIImage(systemName: "play.rectangle.fill")
+        }
+        
+        self.isPaused = !isPaused
     }
 }
 
@@ -151,8 +170,17 @@ extension TranslationView {
     }
     
     private func setUpConstraints() {
+        setUpSwitchLanguageButtonConstraints()
         setUpContentStackViewConstraints()
         setUpPauseImageViewConstraints()
+    }
+    
+    private func setUpSwitchLanguageButtonConstraints() {
+        switchLanguageButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            switchLanguageButton.heightAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.1)
+        ])
     }
     
     private func setUpContentStackViewConstraints() {
@@ -170,8 +198,8 @@ extension TranslationView {
         pauseImageView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            pauseImageView.widthAnchor.constraint(equalToConstant: 100),
-            pauseImageView.heightAnchor.constraint(equalToConstant: 100),
+            pauseImageView.widthAnchor.constraint(equalToConstant: 70),
+            pauseImageView.heightAnchor.constraint(equalToConstant: 70),
             pauseImageView.centerXAnchor.constraint(equalTo: contentStackView.centerXAnchor),
             pauseImageView.bottomAnchor.constraint(equalTo: contentStackView.bottomAnchor, constant: -60)
         ])

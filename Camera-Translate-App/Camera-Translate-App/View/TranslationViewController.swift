@@ -24,19 +24,19 @@ final class TranslationViewController: UIViewController {
 // MARK: - TranslationViewDelegate
 
 extension TranslationViewController: TranslationViewDelegate {
-    func didTappedOriginalLanguageButton() {
-        print("Original Button Tapped")
+    func didTapOriginalLanguageButton(_ language: Language) {
+        print("Original Language Button Tapped / language : \(language.rawValue)")
     }
     
-    func didTappedSwitchLanguageButton() {
+    func didTapSwitchLanguageButton() {
         print("Switch Button Tapped")
     }
     
-    func didTappedTranslateLanguageButton() {
-        print("Translate Button Tapped")
+    func didTapTranslateLanguageButton(_ language: Language) {
+        print("Translate Language Button Tapped / language : \(language.rawValue)")
     }
     
-    func didTappedPauseImageView() {
+    func didTapPauseImageView() {
         print("Pause Button Tapped")
     }
 }
