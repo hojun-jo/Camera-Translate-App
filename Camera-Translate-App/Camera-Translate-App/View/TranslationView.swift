@@ -77,11 +77,11 @@ final class TranslationView: UIView {
         return stackView
     }()
     
-    private let cameraView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.backgroundColor = .systemGray5
+    let cameraView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .systemGray5
         
-        return imageView
+        return view
     }()
     
     private let pauseImageView: UIImageView = {
