@@ -11,6 +11,7 @@
 		289217C92AD8D77000BB6885 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289217C82AD8D77000BB6885 /* UIColor+.swift */; };
 		289217CB2AD903F400BB6885 /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289217CA2AD903F400BB6885 /* Language.swift */; };
 		289217CD2AD9114100BB6885 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289217CC2AD9114100BB6885 /* PaddingLabel.swift */; };
+		289217D32AD95C2600BB6885 /* PapagoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289217D22AD95C2600BB6885 /* PapagoResponse.swift */; };
 		28C69FFA2AD4364200B4A8A9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C69FF92AD4364200B4A8A9 /* AppDelegate.swift */; };
 		28C69FFC2AD4364200B4A8A9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C69FFB2AD4364200B4A8A9 /* SceneDelegate.swift */; };
 		28C69FFE2AD4364200B4A8A9 /* TranslationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C69FFD2AD4364200B4A8A9 /* TranslationViewController.swift */; };
@@ -24,6 +25,7 @@
 		289217CA2AD903F400BB6885 /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
 		289217CC2AD9114100BB6885 /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 		289217D02AD9563A00BB6885 /* APIKey.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = APIKey.xcconfig; sourceTree = "<group>"; };
+		289217D22AD95C2600BB6885 /* PapagoResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PapagoResponse.swift; sourceTree = "<group>"; };
 		28C69FF62AD4364200B4A8A9 /* Camera-Translate-App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Camera-Translate-App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		28C69FF92AD4364200B4A8A9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		28C69FFB2AD4364200B4A8A9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -56,6 +58,7 @@
 		28899C7B2AD53C6E00708D7B /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				289217D12AD95B2200BB6885 /* DTO */,
 				289217CA2AD903F400BB6885 /* Language.swift */,
 			);
 			path = Model;
@@ -85,6 +88,22 @@
 				28C6A0022AD4364300B4A8A9 /* Assets.xcassets */,
 			);
 			path = Resource;
+			sourceTree = "<group>";
+		};
+		289217D12AD95B2200BB6885 /* DTO */ = {
+			isa = PBXGroup;
+			children = (
+				289217D42AD95E0E00BB6885 /* Papago */,
+			);
+			path = DTO;
+			sourceTree = "<group>";
+		};
+		289217D42AD95E0E00BB6885 /* Papago */ = {
+			isa = PBXGroup;
+			children = (
+				289217D22AD95C2600BB6885 /* PapagoResponse.swift */,
+			);
+			path = Papago;
 			sourceTree = "<group>";
 		};
 		289978D52AD8CEEE00653C88 /* Extension */ = {
@@ -203,6 +222,7 @@
 				289217CB2AD903F400BB6885 /* Language.swift in Sources */,
 				28C69FFC2AD4364200B4A8A9 /* SceneDelegate.swift in Sources */,
 				289217C92AD8D77000BB6885 /* UIColor+.swift in Sources */,
+				289217D32AD95C2600BB6885 /* PapagoResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
