@@ -16,7 +16,7 @@ final class TranslationViewController: UIViewController {
         qualityLevel: .accurate,
         recognizesMultipleItems: false,
         isHighFrameRateTrackingEnabled: false,
-        isPinchToZoomEnabled: false,
+        isPinchToZoomEnabled: true,
         isGuidanceEnabled: false,
         isHighlightingEnabled: true)
     
