@@ -165,7 +165,7 @@ extension TranslationView {
         }
         
         [contentStackView, pauseImageView].forEach {
-            self.addSubview($0)
+            addSubview($0)
         }
     }
     
@@ -179,7 +179,7 @@ extension TranslationView {
         switchLanguageButton.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            switchLanguageButton.heightAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.1)
+            switchLanguageButton.heightAnchor.constraint(equalTo: widthAnchor, multiplier: 0.1)
         ])
     }
     
@@ -187,10 +187,10 @@ extension TranslationView {
         contentStackView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            contentStackView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor),
-            contentStackView.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor),
-            contentStackView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
-            contentStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+            contentStackView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
+            contentStackView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
+            contentStackView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            contentStackView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
     

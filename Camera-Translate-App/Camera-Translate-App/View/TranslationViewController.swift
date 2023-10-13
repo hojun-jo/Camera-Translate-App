@@ -39,13 +39,13 @@ final class TranslationViewController: UIViewController {
     }
     
     override func loadView() {
-        self.view = translationView
+        view = translationView
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.translationView.delegate = self
+        translationView.delegate = self
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -56,14 +56,14 @@ final class TranslationViewController: UIViewController {
     }
     
     private func setUpDataScanner() {
-        self.addChild(dataScanner)
-        self.translationView.cameraView.addSubview(dataScanner.view)
+        addChild(dataScanner)
+        translationView.cameraView.addSubview(dataScanner.view)
         dataScanner.didMove(toParent: self)
         
-        dataScanner.view.frame = self.translationView.cameraView.bounds
+        dataScanner.view.frame = translationView.cameraView.bounds
         dataScanner.delegate = self
         
-        self.translationView.addSubview(self.translatedTextLabel)
+        translationView.addSubview(translatedTextLabel)
     }
     
     private func startDataScanning() {
@@ -89,21 +89,21 @@ extension TranslationViewController: DataScannerViewControllerDelegate {
         
         switch item {
         case .text(let text):
-            let padding = self.translationView.topItemStackView.bounds.height
-            + self.translationView.safeAreaInsets.top
+            let padding = translationView.topItemStackView.bounds.height
+            + translationView.safeAreaInsets.top
             let topLeft =  text.bounds.topLeft
             let topRight = text.bounds.topRight
             let bottomLeft = text.bounds.bottomLeft
             
-            self.translatedTextLabel.frame = .init(
+            translatedTextLabel.frame = .init(
                 origin: .init(x: topLeft.x, y: padding + topLeft.y),
                 size: .init(
                     width: topRight.x - topLeft.x,
                     height: bottomLeft.y - topLeft.y))
             
-            self.translatedTextLabel.text = text.transcript
+            translatedTextLabel.text = text.transcript
             
-            self.translatedTextLabel.layoutIfNeeded()
+            translatedTextLabel.layoutIfNeeded()
         case .barcode(_):
             break
         @unknown default:
