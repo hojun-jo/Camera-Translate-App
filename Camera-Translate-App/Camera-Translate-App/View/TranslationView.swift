@@ -66,7 +66,7 @@ final class TranslationView: UIView {
         return button
     }()
     
-    private let topItemStackView: UIStackView = {
+    let topItemStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually

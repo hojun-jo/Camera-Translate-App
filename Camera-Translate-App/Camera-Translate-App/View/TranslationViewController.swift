@@ -10,6 +10,7 @@ import VisionKit
 
 final class TranslationViewController: UIViewController {
     private let translationView = TranslationView()
+    
     private let dataScanner = DataScannerViewController(
         recognizedDataTypes: [.text()],
         qualityLevel: .accurate,
@@ -19,19 +20,32 @@ final class TranslationViewController: UIViewController {
         isGuidanceEnabled: false,
         isHighlightingEnabled: true)
     
+    private let translatedTextLabel: PaddingLabel = {
+        let label = PaddingLabel()
+        label.numberOfLines = .zero
+        label.textColor = .black
+        label.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.8)
+        label.font = .preferredFont(forTextStyle: .title3)
+        label.minimumScaleFactor = 0.5
+        label.adjustsFontForContentSizeCategory = true
+        label.adjustsFontSizeToFitWidth = true
+        
+        return label
+    }()
+    
     private var scannerAvailable: Bool {
         DataScannerViewController.isSupported &&
         DataScannerViewController.isAvailable
     }
     
     override func loadView() {
-        view = translationView
+        self.view = translationView
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        translationView.delegate = self
+        self.translationView.delegate = self
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -48,6 +62,8 @@ final class TranslationViewController: UIViewController {
         
         dataScanner.view.frame = self.translationView.cameraView.bounds
         dataScanner.delegate = self
+        
+        self.translationView.addSubview(self.translatedTextLabel)
     }
     
     private func startDataScanning() {
@@ -73,7 +89,21 @@ extension TranslationViewController: DataScannerViewControllerDelegate {
         
         switch item {
         case .text(let text):
-            print(text)
+            let padding = self.translationView.topItemStackView.bounds.height
+            + self.translationView.safeAreaInsets.top
+            let topLeft =  text.bounds.topLeft
+            let topRight = text.bounds.topRight
+            let bottomLeft = text.bounds.bottomLeft
+            
+            self.translatedTextLabel.frame = .init(
+                origin: .init(x: topLeft.x, y: padding + topLeft.y),
+                size: .init(
+                    width: topRight.x - topLeft.x,
+                    height: bottomLeft.y - topLeft.y))
+            
+            self.translatedTextLabel.text = text.transcript
+            
+            self.translatedTextLabel.layoutIfNeeded()
         case .barcode(_):
             break
         @unknown default:
