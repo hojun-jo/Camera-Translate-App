@@ -5,7 +5,7 @@
 //  Created by Moon on 2023/10/13.
 //
 
-enum Language: String {
+enum Language: String, CaseIterable {
     case korean = "한국어"
     case english = "영어"
     

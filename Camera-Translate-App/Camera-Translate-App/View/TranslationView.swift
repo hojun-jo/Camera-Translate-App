@@ -8,27 +8,17 @@
 import UIKit
 
 protocol TranslationViewDelegate: AnyObject {
-    func didTapOriginalLanguageButton(_ language: Language)
+    func didTapLanguageButton(type: LanguageType, language: Language)
     func didTapSwitchLanguageButton()
-    func didTapTranslateLanguageButton(_ language: Language)
     func didTapPauseImageView()
 }
 
 final class TranslationView: UIView {
     private lazy var sourceLanguageButton: UIButton = {
         let button = UIButton()
-        button.menu = UIMenu(
-            children: [
-                UIAction(title: Language.korean.rawValue, handler: { _ in
-                    self.delegate?.didTapOriginalLanguageButton(.korean)
-                }),
-                UIAction(title: Language.english.rawValue, handler: { _ in
-                    self.delegate?.didTapOriginalLanguageButton(.english)
-                })
-            ])
+        button.menu = UIMenu(children: createLanguageMenuItems(type: .source, selected: .english))
         button.changesSelectionAsPrimaryAction = true
         button.showsMenuAsPrimaryAction = true
-        
         button.titleLabel?.font = .preferredFont(forTextStyle: .title3)
         button.setImage(.init(systemName: "chevron.down"), for: .normal)
         button.tintColor = .black
@@ -47,15 +37,7 @@ final class TranslationView: UIView {
     
     private lazy var targetLanguageButton: UIButton = {
         let button = UIButton()
-        button.menu = UIMenu(
-            children: [
-                UIAction(title: Language.english.rawValue, handler: { _ in
-                    self.delegate?.didTapOriginalLanguageButton(.english)
-                }),
-                UIAction(title: Language.korean.rawValue, handler: { _ in
-                    self.delegate?.didTapOriginalLanguageButton(.korean)
-                })
-            ])
+        button.menu = UIMenu(children: createLanguageMenuItems(type: .target, selected: .korean))
         button.changesSelectionAsPrimaryAction = true
         button.showsMenuAsPrimaryAction = true
         button.titleLabel?.font = .preferredFont(forTextStyle: .title3)
@@ -112,6 +94,28 @@ final class TranslationView: UIView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func createLanguageMenuItems(type: LanguageType, selected selectedLanguage: Language) -> [UIAction] {
+        var items: [UIAction] = []
+        
+        Language.allCases.forEach { language in
+            let action = UIAction(
+                title: language.rawValue,
+                handler: { _ in
+                    self.delegate?.didTapLanguageButton(
+                        type: type,
+                        language: language)
+                })
+            
+            if language == selectedLanguage {
+                action.state = .on
+            }
+            
+            items.append(action)
+        }
+        
+        return items
     }
     
     private func setUpActions() {
