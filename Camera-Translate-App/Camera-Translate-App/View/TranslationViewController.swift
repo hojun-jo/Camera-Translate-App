@@ -107,6 +107,8 @@ extension TranslationViewController: DataScannerViewControllerDelegate {
             return
         }
         
+        isAvailableTranslate = false
+        
         switch item {
         case .text(let text):
             let padding = translationView.topItemStackView.bounds.height
@@ -130,8 +132,6 @@ extension TranslationViewController: DataScannerViewControllerDelegate {
                 } catch {
                     print(error.localizedDescription)
                 }
-                
-                isAvailableTranslate = false
             }
         case .barcode(_):
             break
