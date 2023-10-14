@@ -15,7 +15,7 @@ protocol TranslationViewDelegate: AnyObject {
 }
 
 final class TranslationView: UIView {
-    private lazy var originalLanguageButton: UIButton = {
+    private lazy var sourceLanguageButton: UIButton = {
         let button = UIButton()
         button.menu = UIMenu(
             children: [
@@ -45,7 +45,7 @@ final class TranslationView: UIView {
         return button
     }()
     
-    private lazy var translateLanguageButton: UIButton = {
+    private lazy var targetLanguageButton: UIButton = {
         let button = UIButton()
         button.menu = UIMenu(
             children: [
@@ -156,7 +156,7 @@ extension TranslationView {
     }
     
     private func addSubviews() {
-        [originalLanguageButton, switchLanguageButton, translateLanguageButton].forEach {
+        [sourceLanguageButton, switchLanguageButton, targetLanguageButton].forEach {
             topItemStackView.addArrangedSubview($0)
         }
         
