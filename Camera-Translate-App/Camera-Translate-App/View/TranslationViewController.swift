@@ -38,6 +38,8 @@ final class TranslationViewController: UIViewController {
         DataScannerViewController.isAvailable
     }
     
+    private var currentTextlabelOrigin = CGPoint()
+    
     override func loadView() {
         view = translationView
     }
@@ -46,6 +48,16 @@ final class TranslationViewController: UIViewController {
         super.viewDidLoad()
         
         translationView.delegate = self
+        
+//        Task {
+//            do {
+//                let papago = PapagoAPI(source: .korean, target: .english, text: "hi 안녕")
+//                let result: PapagoResponse = try await NetworkManager.fetchData(for: papago)
+//                print(result.message.result.translatedText)
+//            } catch {
+//                print(error.localizedDescription)
+//            }
+//        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -95,15 +107,28 @@ extension TranslationViewController: DataScannerViewControllerDelegate {
             let topRight = text.bounds.topRight
             let bottomLeft = text.bounds.bottomLeft
             
-            translatedTextLabel.frame = .init(
-                origin: .init(x: topLeft.x - 10, y: padding + topLeft.y - 10),
-                size: .init(
-                    width: topRight.x - topLeft.x + 20,
-                    height: bottomLeft.y - topLeft.y + 20))
-            
-            translatedTextLabel.text = text.transcript
-            
-            translatedTextLabel.layoutIfNeeded()
+            if abs(currentTextlabelOrigin.x - topLeft.x) > 20
+                || abs(currentTextlabelOrigin.y - topLeft.y) > 20 {
+                
+                currentTextlabelOrigin = topLeft
+                
+                translatedTextLabel.frame = .init(
+                    origin: .init(x: topLeft.x - 10, y: padding + topLeft.y - 10),
+                    size: .init(
+                        width: topRight.x - topLeft.x + 20,
+                        height: bottomLeft.y - topLeft.y + 20))
+                
+                Task {
+                    do {
+                        let papago = PapagoAPI(source: .english, target: .korean, text: text.transcript)
+                        let result: PapagoResponse = try await NetworkManager.fetchData(for: papago)
+                        translatedTextLabel.text = result.message.result.translatedText
+                        translatedTextLabel.layoutIfNeeded()
+                    } catch {
+                        print(error.localizedDescription)
+                    }
+                }
+            }
         case .barcode(_):
             break
         @unknown default:
