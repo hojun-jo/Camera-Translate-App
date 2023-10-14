@@ -108,7 +108,7 @@
 		289217D12AD95B2200BB6885 /* DTO */ = {
 			isa = PBXGroup;
 			children = (
-				289217D42AD95E0E00BB6885 /* Papago */,
+				289217D22AD95C2600BB6885 /* PapagoResponse.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -116,7 +116,8 @@
 		289217D42AD95E0E00BB6885 /* Papago */ = {
 			isa = PBXGroup;
 			children = (
-				289217D22AD95C2600BB6885 /* PapagoResponse.swift */,
+				289217D12AD95B2200BB6885 /* DTO */,
+				289217DD2ADA699700BB6885 /* PapagoAPI.swift */,
 			);
 			path = Papago;
 			sourceTree = "<group>";
@@ -124,7 +125,6 @@
 		289217D72ADA693400BB6885 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				289217D12AD95B2200BB6885 /* DTO */,
 				289217D82ADA695400BB6885 /* API */,
 				289217CE2AD939B300BB6885 /* NetworkManager.swift */,
 				289217DF2ADA69C800BB6885 /* HTTPMethod.swift */,
@@ -136,8 +136,8 @@
 		289217D82ADA695400BB6885 /* API */ = {
 			isa = PBXGroup;
 			children = (
-				289217DA2ADA695F00BB6885 /* Implementaion */,
 				289217D92ADA695B00BB6885 /* Interface */,
+				289217D42AD95E0E00BB6885 /* Papago */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -148,14 +148,6 @@
 				289217DB2ADA697400BB6885 /* APIType.swift */,
 			);
 			path = Interface;
-			sourceTree = "<group>";
-		};
-		289217DA2ADA695F00BB6885 /* Implementaion */ = {
-			isa = PBXGroup;
-			children = (
-				289217DD2ADA699700BB6885 /* PapagoAPI.swift */,
-			);
-			path = Implementaion;
 			sourceTree = "<group>";
 		};
 		289978D52AD8CEEE00653C88 /* Extension */ = {
