@@ -152,7 +152,7 @@ extension TranslationView {
     }
     
     private func setUpView() {
-        self.backgroundColor = .systemBackground
+        self.backgroundColor = .orange2
     }
     
     private func addSubviews() {
