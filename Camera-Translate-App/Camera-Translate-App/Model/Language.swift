@@ -12,9 +12,9 @@ enum Language: String {
     var identifier: String {
         switch self {
         case .korean:
-            return "ko-KR"
+            return "ko"
         case .english:
-            return "en-US"
+            return "en"
         }
     }
 }
