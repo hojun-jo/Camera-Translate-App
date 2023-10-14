@@ -38,7 +38,8 @@ final class TranslationViewController: UIViewController {
         DataScannerViewController.isAvailable
     }
     
-    private var currentTextlabelOrigin = CGPoint()
+    private var isAvailableTranslate = true
+    private var fetchDelayTimer: Timer?
     
     override func loadView() {
         view = translationView
@@ -48,16 +49,6 @@ final class TranslationViewController: UIViewController {
         super.viewDidLoad()
         
         translationView.delegate = self
-        
-//        Task {
-//            do {
-//                let papago = PapagoAPI(source: .korean, target: .english, text: "hi 안녕")
-//                let result: PapagoResponse = try await NetworkManager.fetchData(for: papago)
-//                print(result.message.result.translatedText)
-//            } catch {
-//                print(error.localizedDescription)
-//            }
-//        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -82,6 +73,7 @@ final class TranslationViewController: UIViewController {
         do {
             if scannerAvailable {
                 try dataScanner.startScanning()
+                startFetchDelayTimer()
             } else {
                 print("카메라 권한이 필요합니다")
             }
@@ -89,13 +81,29 @@ final class TranslationViewController: UIViewController {
             print(error.localizedDescription)
         }
     }
+    
+    private func startFetchDelayTimer() {
+        fetchDelayTimer = Timer.scheduledTimer(
+            timeInterval: 1,
+            target: self,
+            selector: #selector(enableTranslate),
+            userInfo: nil,
+            repeats: true)
+    }
+    
+    @objc
+    private func enableTranslate() {
+        isAvailableTranslate = true
+    }
 }
 
 // MARK: - DataScannerViewControllerDelegate
 
 extension TranslationViewController: DataScannerViewControllerDelegate {
     func dataScanner(_ dataScanner: DataScannerViewController, didAdd addedItems: [RecognizedItem], allItems: [RecognizedItem]) {
-        guard let item = allItems.last else {
+        guard isAvailableTranslate,
+              let item = allItems.last
+        else {
             return
         }
         
@@ -107,27 +115,23 @@ extension TranslationViewController: DataScannerViewControllerDelegate {
             let topRight = text.bounds.topRight
             let bottomLeft = text.bounds.bottomLeft
             
-            if abs(currentTextlabelOrigin.x - topLeft.x) > 20
-                || abs(currentTextlabelOrigin.y - topLeft.y) > 20 {
-                
-                currentTextlabelOrigin = topLeft
-                
-                translatedTextLabel.frame = .init(
-                    origin: .init(x: topLeft.x - 10, y: padding + topLeft.y - 10),
-                    size: .init(
-                        width: topRight.x - topLeft.x + 20,
-                        height: bottomLeft.y - topLeft.y + 20))
-                
-                Task {
-                    do {
-                        let papago = PapagoAPI(source: .english, target: .korean, text: text.transcript)
-                        let result: PapagoResponse = try await NetworkManager.fetchData(for: papago)
-                        translatedTextLabel.text = result.message.result.translatedText
-                        translatedTextLabel.layoutIfNeeded()
-                    } catch {
-                        print(error.localizedDescription)
-                    }
+            translatedTextLabel.frame = .init(
+                origin: .init(x: topLeft.x - 10, y: padding + topLeft.y - 10),
+                size: .init(
+                    width: topRight.x - topLeft.x + 20,
+                    height: bottomLeft.y - topLeft.y + 20))
+            
+            Task {
+                do {
+                    let papago = PapagoAPI(source: .english, target: .korean, text: text.transcript)
+                    let result: PapagoResponse = try await NetworkManager.fetchData(for: papago)
+                    translatedTextLabel.text = result.message.result.translatedText
+                    translatedTextLabel.layoutIfNeeded()
+                } catch {
+                    print(error.localizedDescription)
                 }
+                
+                isAvailableTranslate = false
             }
         case .barcode(_):
             break
