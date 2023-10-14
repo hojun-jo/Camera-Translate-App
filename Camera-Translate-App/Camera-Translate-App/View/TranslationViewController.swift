@@ -128,7 +128,6 @@ extension TranslationViewController: DataScannerViewControllerDelegate {
                     let papago = PapagoAPI(source: .english, target: .korean, text: text.transcript)
                     let result: PapagoResponse = try await NetworkManager.fetchData(for: papago)
                     translatedTextLabel.text = result.message.result.translatedText
-                    translatedTextLabel.layoutIfNeeded()
                 } catch {
                     print(error.localizedDescription)
                 }
