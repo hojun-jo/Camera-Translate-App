@@ -9,7 +9,7 @@ import UIKit
 
 protocol TranslationViewDelegate: AnyObject {
     func didTapLanguageButton(type: LanguageType, language: Language)
-    func didTapSwitchLanguageButton()
+    func didTapLanguageSwapButton()
     func didTapPauseImageView()
 }
 
@@ -27,7 +27,7 @@ final class TranslationView: UIView {
         return button
     }()
     
-    private let switchLanguageButton: UIButton = {
+    private let LanguageSwapButton: UIButton = {
         let button = UIButton()
         button.setImage(.init(named: "changeButton"), for: .normal)
         button.imageView?.contentMode = .scaleAspectFit
@@ -102,8 +102,8 @@ final class TranslationView: UIView {
         Language.allCases.forEach { language in
             let action = UIAction(
                 title: language.rawValue,
-                handler: { _ in
-                    self.delegate?.didTapLanguageButton(
+                handler: { [weak self] _ in
+                    self?.delegate?.didTapLanguageButton(
                         type: type,
                         language: language)
                 })
@@ -119,14 +119,21 @@ final class TranslationView: UIView {
     }
     
     private func setUpActions() {
-        switchLanguageButton.addAction(.init(
+        LanguageSwapButton.addAction(.init(
             handler: { [weak self] _ in
-                self?.delegate?.didTapSwitchLanguageButton()
+                self?.delegate?.didTapLanguageSwapButton()
+                self?.swapLanguage()
             }), for: .touchUpInside)
         
         pauseImageView.addGestureRecognizer(UITapGestureRecognizer(
             target: self,
             action: #selector(didTapPauseImageView)))
+    }
+    
+    private func swapLanguage() {
+        let tmp = sourceLanguageButton.menu
+        sourceLanguageButton.menu = targetLanguageButton.menu
+        targetLanguageButton.menu = tmp
     }
     
     @objc
@@ -160,7 +167,7 @@ extension TranslationView {
     }
     
     private func addSubviews() {
-        [sourceLanguageButton, switchLanguageButton, targetLanguageButton].forEach {
+        [sourceLanguageButton, LanguageSwapButton, targetLanguageButton].forEach {
             topItemStackView.addArrangedSubview($0)
         }
         
@@ -180,10 +187,10 @@ extension TranslationView {
     }
     
     private func setUpSwitchLanguageButtonConstraints() {
-        switchLanguageButton.translatesAutoresizingMaskIntoConstraints = false
+        LanguageSwapButton.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            switchLanguageButton.heightAnchor.constraint(equalTo: widthAnchor, multiplier: 0.1)
+            LanguageSwapButton.heightAnchor.constraint(equalTo: widthAnchor, multiplier: 0.1)
         ])
     }
     

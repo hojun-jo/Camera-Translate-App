@@ -148,7 +148,7 @@ extension TranslationViewController: TranslationViewDelegate {
         print("Language Button Tapped - type: \(type), language: \(language)")
     }
     
-    func didTapSwitchLanguageButton() {
+    func didTapLanguageSwapButton() {
         print("Switch Button Tapped")
     }
     
