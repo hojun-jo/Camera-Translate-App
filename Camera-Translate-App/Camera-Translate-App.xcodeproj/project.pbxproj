@@ -11,6 +11,7 @@
 		289217C92AD8D77000BB6885 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289217C82AD8D77000BB6885 /* UIColor+.swift */; };
 		289217CB2AD903F400BB6885 /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289217CA2AD903F400BB6885 /* Language.swift */; };
 		289217CD2AD9114100BB6885 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289217CC2AD9114100BB6885 /* PaddingLabel.swift */; };
+		289217CF2AD939B300BB6885 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289217CE2AD939B300BB6885 /* NetworkManager.swift */; };
 		289217D32AD95C2600BB6885 /* PapagoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289217D22AD95C2600BB6885 /* PapagoResponse.swift */; };
 		289217D62AD9649300BB6885 /* Bundle+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289217D52AD9649300BB6885 /* Bundle+.swift */; };
 		289217DC2ADA697400BB6885 /* APIType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289217DB2ADA697400BB6885 /* APIType.swift */; };
@@ -29,6 +30,7 @@
 		289217C82AD8D77000BB6885 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		289217CA2AD903F400BB6885 /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
 		289217CC2AD9114100BB6885 /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
+		289217CE2AD939B300BB6885 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		289217D02AD9563A00BB6885 /* APIKey.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = APIKey.xcconfig; sourceTree = "<group>"; };
 		289217D22AD95C2600BB6885 /* PapagoResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PapagoResponse.swift; sourceTree = "<group>"; };
 		289217D52AD9649300BB6885 /* Bundle+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+.swift"; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 			children = (
 				289217D12AD95B2200BB6885 /* DTO */,
 				289217D82ADA695400BB6885 /* API */,
+				289217CE2AD939B300BB6885 /* NetworkManager.swift */,
 				289217DF2ADA69C800BB6885 /* HTTPMethod.swift */,
 				289217E22ADA6ABA00BB6885 /* NetworkError.swift */,
 			);
@@ -269,6 +272,7 @@
 				28C69FFA2AD4364200B4A8A9 /* AppDelegate.swift in Sources */,
 				28899C802AD544D500708D7B /* TranslationView.swift in Sources */,
 				289217DC2ADA697400BB6885 /* APIType.swift in Sources */,
+				289217CF2AD939B300BB6885 /* NetworkManager.swift in Sources */,
 				289217CB2AD903F400BB6885 /* Language.swift in Sources */,
 				28C69FFC2AD4364200B4A8A9 /* SceneDelegate.swift in Sources */,
 				289217C92AD8D77000BB6885 /* UIColor+.swift in Sources */,
