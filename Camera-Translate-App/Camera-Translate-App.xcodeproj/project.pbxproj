@@ -19,6 +19,7 @@
 		289217E02ADA69C800BB6885 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289217DF2ADA69C800BB6885 /* HTTPMethod.swift */; };
 		289217E32ADA6ABA00BB6885 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289217E22ADA6ABA00BB6885 /* NetworkError.swift */; };
 		289217E52ADAFF9D00BB6885 /* LanguageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289217E42ADAFF9D00BB6885 /* LanguageType.swift */; };
+		289217E72ADB245E00BB6885 /* TranslationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289217E62ADB245E00BB6885 /* TranslationModel.swift */; };
 		28C69FFA2AD4364200B4A8A9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C69FF92AD4364200B4A8A9 /* AppDelegate.swift */; };
 		28C69FFC2AD4364200B4A8A9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C69FFB2AD4364200B4A8A9 /* SceneDelegate.swift */; };
 		28C69FFE2AD4364200B4A8A9 /* TranslationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C69FFD2AD4364200B4A8A9 /* TranslationViewController.swift */; };
@@ -40,6 +41,7 @@
 		289217DF2ADA69C800BB6885 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		289217E22ADA6ABA00BB6885 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		289217E42ADAFF9D00BB6885 /* LanguageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageType.swift; sourceTree = "<group>"; };
+		289217E62ADB245E00BB6885 /* TranslationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationModel.swift; sourceTree = "<group>"; };
 		28C69FF62AD4364200B4A8A9 /* Camera-Translate-App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Camera-Translate-App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		28C69FF92AD4364200B4A8A9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		28C69FFB2AD4364200B4A8A9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -75,6 +77,7 @@
 				289217D72ADA693400BB6885 /* Network */,
 				289217CA2AD903F400BB6885 /* Language.swift */,
 				289217E42ADAFF9D00BB6885 /* LanguageType.swift */,
+				289217E62ADB245E00BB6885 /* TranslationModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -261,6 +264,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				289217DE2ADA699700BB6885 /* PapagoAPI.swift in Sources */,
+				289217E72ADB245E00BB6885 /* TranslationModel.swift in Sources */,
 				289217E32ADA6ABA00BB6885 /* NetworkError.swift in Sources */,
 				28C69FFE2AD4364200B4A8A9 /* TranslationViewController.swift in Sources */,
 				289217CD2AD9114100BB6885 /* PaddingLabel.swift in Sources */,
