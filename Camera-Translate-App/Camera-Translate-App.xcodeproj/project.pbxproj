@@ -60,7 +60,7 @@
 		28899C7B2AD53C6E00708D7B /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				289217D12AD95B2200BB6885 /* DTO */,
+				289217D72ADA693400BB6885 /* Network */,
 				289217CA2AD903F400BB6885 /* Language.swift */,
 			);
 			path = Model;
@@ -108,6 +108,7 @@
 			path = Papago;
 			sourceTree = "<group>";
 		};
+				289217D12AD95B2200BB6885 /* DTO */,
 		289978D52AD8CEEE00653C88 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
