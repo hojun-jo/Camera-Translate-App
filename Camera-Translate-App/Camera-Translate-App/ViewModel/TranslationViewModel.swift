@@ -11,9 +11,13 @@ import Combine
 @MainActor
 final class TranslationViewModel {
     @Published var translationModel: TranslationModel
+    @Published var isPausedScan = false
+    
     let languageButtonTapped = PassthroughSubject<(LanguageType, SupportedLanguage), Never>()
     let languageSwapButtonTapped = PassthroughSubject<Void, Never>()
     let scanData = PassthroughSubject<String, Never>()
+    let pauseImageViewTapped = PassthroughSubject<Void, Never>()
+    
     private var cancellables = Set<AnyCancellable>()
     
     var scannerAvailable: Bool {
@@ -62,6 +66,12 @@ final class TranslationViewModel {
                     print(error.localizedDescription)
                 }
             }
+        }
+        .store(in: &cancellables)
+        
+        pauseImageViewTapped.sink { [weak self] _ in
+            self?.isPausedScan.toggle()
+            print("Pause Button Tapped")
         }
         .store(in: &cancellables)
     }

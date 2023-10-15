@@ -111,6 +111,16 @@ final class TranslationViewController: UIViewController {
                 self?.translatedTextLabel.text = model.translatedText
             }
             .store(in: &cancellables)
+        
+        viewModel.$isPausedScan
+            .sink { [weak self] isPaused in
+                if isPaused {
+                    self?.translationView.pauseImageView.image = UIImage(systemName: "play.rectangle.fill")
+                } else {
+                    self?.translationView.pauseImageView.image = UIImage(systemName: "pause.rectangle.fill")
+                }
+            }
+            .store(in: &cancellables)
     }
 }
 
@@ -161,6 +171,6 @@ extension TranslationViewController: TranslationViewDelegate {
     }
     
     func didTapPauseImageView() {
-        print("Pause Button Tapped")
+        viewModel.pauseImageViewTapped.send()
     }
 }

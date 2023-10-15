@@ -66,7 +66,7 @@ final class TranslationView: UIView {
         return view
     }()
     
-    private let pauseImageView: UIImageView = {
+    let pauseImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(systemName: "pause.rectangle.fill")
         imageView.tintColor = .yellow1
@@ -139,17 +139,6 @@ final class TranslationView: UIView {
     @objc
     private func didTapPauseImageView() {
         self.delegate?.didTapPauseImageView()
-        togglePauseImage(isPaused: self.isPaused)
-    }
-    
-    private func togglePauseImage(isPaused: Bool) {
-        if isPaused {
-            pauseImageView.image = UIImage(systemName: "pause.rectangle.fill")
-        } else {
-            pauseImageView.image = UIImage(systemName: "play.rectangle.fill")
-        }
-        
-        self.isPaused = !isPaused
     }
 }
 
