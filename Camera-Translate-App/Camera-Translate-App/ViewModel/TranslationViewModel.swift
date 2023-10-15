@@ -28,32 +28,36 @@ final class TranslationViewModel {
     }
     
     private func setUpBindings() {
-        languageButtonTapped.sink { (type, language) in
+        languageButtonTapped.sink { [weak self] (type, language) in
             switch type {
             case .source:
-                self.translationModel.source = language
+                self?.translationModel.source = language
             case .target:
-                self.translationModel.target = language
+                self?.translationModel.target = language
             }
             print("Language Button Tapped - type: \(type), language: \(language)")
         }
         .store(in: &cancellables)
         
-        languageSwapButtonTapped.sink { _ in
-            self.translationModel.swapSourceAndTarget()
+        languageSwapButtonTapped.sink { [weak self] _ in
+            self?.translationModel.swapSourceAndTarget()
             print("Switch Button Tapped")
         }
         .store(in: &cancellables)
         
-        scanData.sink { text in
+        scanData.sink { [weak self] text in
             Task {
                 do {
+                    guard let model = self?.translationModel else {
+                        return
+                    }
+                    
                     let papago = PapagoAPI(
-                        source: self.translationModel.source,
-                        target: self.translationModel.target,
+                        source: model.source,
+                        target: model.target,
                         text: text)
                     let result: PapagoResponse = try await NetworkManager.fetchData(for: papago)
-                    self.translationModel.translatedText = result.message.result.translatedText
+                    self?.translationModel.translatedText = result.message.result.translatedText
                 } catch {
                     print(error.localizedDescription)
                 }

@@ -107,8 +107,8 @@ final class TranslationViewController: UIViewController {
     
     private func setUpBindings() {
         viewModel.$translationModel
-            .sink { model in
-                self.translatedTextLabel.text = model.translatedText
+            .sink { [weak self] model in
+                self?.translatedTextLabel.text = model.translatedText
             }
             .store(in: &cancellables)
     }
