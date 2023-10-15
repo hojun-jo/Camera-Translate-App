@@ -9,4 +9,10 @@ struct TranslationModel {
     var source: SupportedLanguage = .english
     var target: SupportedLanguage = .korean
     var translatedText: String = ""
+    
+    mutating func swapSourceAndTarget() {
+        let tmp = source
+        source = target
+        target = tmp
+    }
 }

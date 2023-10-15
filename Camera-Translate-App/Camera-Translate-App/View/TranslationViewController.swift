@@ -154,7 +154,7 @@ extension TranslationViewController: TranslationViewDelegate {
     }
     
     func didTapLanguageSwapButton() {
-        print("Switch Button Tapped")
+        viewModel.languageSwapButtonTapped.send()
     }
     
     func didTapPauseImageView() {

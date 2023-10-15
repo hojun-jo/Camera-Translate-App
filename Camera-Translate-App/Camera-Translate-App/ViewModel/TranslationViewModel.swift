@@ -12,6 +12,7 @@ import Combine
 final class TranslationViewModel {
     @Published private var translationModel: TranslationModel
     let languageButtonTapped = PassthroughSubject<(LanguageType, SupportedLanguage), Never>()
+    let languageSwapButtonTapped = PassthroughSubject<Void, Never>()
     private var cancellables = Set<AnyCancellable>()
     
     var scannerAvailable: Bool {
@@ -34,6 +35,12 @@ final class TranslationViewModel {
                 self.translationModel.target = language
             }
             print("Language Button Tapped - type: \(type), language: \(language)")
+        }
+        .store(in: &cancellables)
+        
+        languageSwapButtonTapped.sink { _ in
+            self.translationModel.swapSourceAndTarget()
+            print("Switch Button Tapped")
         }
         .store(in: &cancellables)
     }
