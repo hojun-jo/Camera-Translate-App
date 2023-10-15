@@ -149,8 +149,8 @@ extension TranslationViewController: DataScannerViewControllerDelegate {
 // MARK: - TranslationViewDelegate
 
 extension TranslationViewController: TranslationViewDelegate {
-    func didTapLanguageButton(type: LanguageType, language: Language) {
-        print("Language Button Tapped - type: \(type), language: \(language)")
+    func didTapLanguageButton(type: LanguageType, language: SupportedLanguage) {
+        viewModel.languageButtonTapped.send((type, language))
     }
     
     func didTapLanguageSwapButton() {
