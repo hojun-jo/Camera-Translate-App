@@ -33,13 +33,19 @@ final class TranslationViewController: UIViewController {
         return label
     }()
     
-    private var scannerAvailable: Bool {
-        DataScannerViewController.isSupported &&
-        DataScannerViewController.isAvailable
-    }
-    
+    private let viewModel: TranslationViewModel
     private var isAvailableTranslate = true
     private var fetchDelayTimer: Timer?
+    
+    init(viewModel: TranslationViewModel) {
+        self.viewModel = viewModel
+        
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func loadView() {
         view = translationView
@@ -71,7 +77,7 @@ final class TranslationViewController: UIViewController {
     
     private func startDataScanning() {
         do {
-            if scannerAvailable {
+            if viewModel.scannerAvailable {
                 try dataScanner.startScanning()
                 startFetchDelayTimer()
             } else {

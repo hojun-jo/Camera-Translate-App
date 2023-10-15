@@ -13,8 +13,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
+        let translationModel = TranslationModel()
+        let translationViewModel = TranslationViewModel(translationModel: translationModel)
+        let translationViewController = TranslationViewController(viewModel: translationViewModel)
+        
         window = UIWindow(windowScene: windowScene)
-        window?.rootViewController = TranslationViewController()
+        window?.rootViewController = translationViewController
         window?.makeKeyAndVisible()
     }
 }
