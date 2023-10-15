@@ -7,6 +7,7 @@
 
 import UIKit
 import VisionKit
+import Combine
 
 final class TranslationViewController: UIViewController {
     private let translationView = TranslationView()
@@ -36,6 +37,7 @@ final class TranslationViewController: UIViewController {
     private let viewModel: TranslationViewModel
     private var isAvailableTranslate = true
     private var fetchDelayTimer: Timer?
+    private var cancellables = Set<AnyCancellable>()
     
     init(viewModel: TranslationViewModel) {
         self.viewModel = viewModel
@@ -62,6 +64,7 @@ final class TranslationViewController: UIViewController {
         
         setUpDataScanner()
         startDataScanning()
+        setUpBindings()
     }
     
     private func setUpDataScanner() {
@@ -101,6 +104,14 @@ final class TranslationViewController: UIViewController {
     private func enableTranslate() {
         isAvailableTranslate = true
     }
+    
+    private func setUpBindings() {
+        viewModel.$translationModel
+            .sink { model in
+                self.translatedTextLabel.text = model.translatedText
+            }
+            .store(in: &cancellables)
+    }
 }
 
 // MARK: - DataScannerViewControllerDelegate
@@ -129,15 +140,7 @@ extension TranslationViewController: DataScannerViewControllerDelegate {
                     width: topRight.x - topLeft.x + 20,
                     height: bottomLeft.y - topLeft.y + 20))
             
-            Task {
-                do {
-                    let papago = PapagoAPI(source: .english, target: .korean, text: text.transcript)
-                    let result: PapagoResponse = try await NetworkManager.fetchData(for: papago)
-                    translatedTextLabel.text = result.message.result.translatedText
-                } catch {
-                    print(error.localizedDescription)
-                }
-            }
+            viewModel.scanData.send(text.transcript)
         case .barcode(_):
             break
         @unknown default:

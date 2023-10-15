@@ -10,9 +10,10 @@ import Combine
 
 @MainActor
 final class TranslationViewModel {
-    @Published private var translationModel: TranslationModel
+    @Published var translationModel: TranslationModel
     let languageButtonTapped = PassthroughSubject<(LanguageType, SupportedLanguage), Never>()
     let languageSwapButtonTapped = PassthroughSubject<Void, Never>()
+    let scanData = PassthroughSubject<String, Never>()
     private var cancellables = Set<AnyCancellable>()
     
     var scannerAvailable: Bool {
@@ -41,6 +42,22 @@ final class TranslationViewModel {
         languageSwapButtonTapped.sink { _ in
             self.translationModel.swapSourceAndTarget()
             print("Switch Button Tapped")
+        }
+        .store(in: &cancellables)
+        
+        scanData.sink { text in
+            Task {
+                do {
+                    let papago = PapagoAPI(
+                        source: self.translationModel.source,
+                        target: self.translationModel.target,
+                        text: text)
+                    let result: PapagoResponse = try await NetworkManager.fetchData(for: papago)
+                    self.translationModel.translatedText = result.message.result.translatedText
+                } catch {
+                    print(error.localizedDescription)
+                }
+            }
         }
         .store(in: &cancellables)
     }
