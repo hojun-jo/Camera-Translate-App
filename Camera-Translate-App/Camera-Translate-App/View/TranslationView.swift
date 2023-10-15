@@ -8,7 +8,7 @@
 import UIKit
 
 protocol TranslationViewDelegate: AnyObject {
-    func didTapLanguageButton(type: LanguageType, language: Language)
+    func didTapLanguageButton(type: LanguageType, language: SupportedLanguage)
     func didTapLanguageSwapButton()
     func didTapPauseImageView()
 }
@@ -96,10 +96,10 @@ final class TranslationView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func createLanguageMenuItems(type: LanguageType, selected selectedLanguage: Language) -> [UIAction] {
+    private func createLanguageMenuItems(type: LanguageType, selected selectedLanguage: SupportedLanguage) -> [UIAction] {
         var items: [UIAction] = []
         
-        Language.allCases.forEach { language in
+        SupportedLanguage.allCases.forEach { language in
             let action = UIAction(
                 title: language.rawValue,
                 handler: { [weak self] _ in

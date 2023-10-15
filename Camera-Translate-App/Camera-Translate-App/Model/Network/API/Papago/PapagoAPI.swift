@@ -17,7 +17,7 @@ struct PapagoAPI: APIType {
     ]
     var queryItems: [URLQueryItem]?
     
-    init(source: Language, target: Language, text: String) {
+    init(source: SupportedLanguage, target: SupportedLanguage, text: String) {
         queryItems = [
             URLQueryItem(name: "source", value: source.identifier),
             URLQueryItem(name: "target", value: target.identifier),

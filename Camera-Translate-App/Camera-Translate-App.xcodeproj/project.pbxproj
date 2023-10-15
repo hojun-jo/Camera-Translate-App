@@ -31,7 +31,7 @@
 /* Begin PBXFileReference section */
 		28899C7F2AD544D500708D7B /* TranslationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationView.swift; sourceTree = "<group>"; };
 		289217C82AD8D77000BB6885 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
-		289217CA2AD903F400BB6885 /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
+		289217CA2AD903F400BB6885 /* SupportedLanguage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportedLanguage.swift; sourceTree = "<group>"; };
 		289217CC2AD9114100BB6885 /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 		289217CE2AD939B300BB6885 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		289217D02AD9563A00BB6885 /* APIKey.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = APIKey.xcconfig; sourceTree = "<group>"; };
@@ -77,8 +77,8 @@
 			isa = PBXGroup;
 			children = (
 				289217D72ADA693400BB6885 /* Network */,
-				289217CA2AD903F400BB6885 /* Language.swift */,
 				289217E42ADAFF9D00BB6885 /* LanguageType.swift */,
+				289217CA2AD903F400BB6885 /* SupportedLanguage.swift */,
 				289217E62ADB245E00BB6885 /* TranslationModel.swift */,
 			);
 			path = Model;
@@ -275,7 +275,7 @@
 				28899C802AD544D500708D7B /* TranslationView.swift in Sources */,
 				289217DC2ADA697400BB6885 /* APIType.swift in Sources */,
 				289217CF2AD939B300BB6885 /* NetworkManager.swift in Sources */,
-				289217CB2AD903F400BB6885 /* Language.swift in Sources */,
+				289217CB2AD903F400BB6885 /* SupportedLanguage.swift in Sources */,
 				28C69FFC2AD4364200B4A8A9 /* SceneDelegate.swift in Sources */,
 				289217E92ADBB55C00BB6885 /* TranslationViewModel.swift in Sources */,
 				289217C92AD8D77000BB6885 /* UIColor+.swift in Sources */,

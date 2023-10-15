@@ -1,11 +1,11 @@
 //
-//  Language.swift
+//  SupportedLanguage.swift
 //  Camera-Translate-App
 //
 //  Created by Moon on 2023/10/13.
 //
 
-enum Language: String, CaseIterable {
+enum SupportedLanguage: String, CaseIterable {
     case korean = "한국어"
     case english = "영어"
     

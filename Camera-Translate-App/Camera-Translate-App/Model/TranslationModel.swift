@@ -6,7 +6,7 @@
 //
 
 struct TranslationModel {
-    var source: Language = .english
-    var target: Language = .korean
+    var source: SupportedLanguage = .english
+    var target: SupportedLanguage = .korean
     var translatedText: String = ""
 }
