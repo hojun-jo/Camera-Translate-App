@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		28899C802AD544D500708D7B /* TranslationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28899C7F2AD544D500708D7B /* TranslationView.swift */; };
 		289217C92AD8D77000BB6885 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289217C82AD8D77000BB6885 /* UIColor+.swift */; };
-		289217CB2AD903F400BB6885 /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289217CA2AD903F400BB6885 /* Language.swift */; };
+		289217CB2AD903F400BB6885 /* SupportedLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289217CA2AD903F400BB6885 /* SupportedLanguage.swift */; };
 		289217CD2AD9114100BB6885 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289217CC2AD9114100BB6885 /* PaddingLabel.swift */; };
 		289217CF2AD939B300BB6885 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289217CE2AD939B300BB6885 /* NetworkManager.swift */; };
 		289217D32AD95C2600BB6885 /* PapagoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289217D22AD95C2600BB6885 /* PapagoResponse.swift */; };
@@ -21,6 +21,7 @@
 		289217E52ADAFF9D00BB6885 /* LanguageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289217E42ADAFF9D00BB6885 /* LanguageType.swift */; };
 		289217E72ADB245E00BB6885 /* TranslationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289217E62ADB245E00BB6885 /* TranslationModel.swift */; };
 		289217E92ADBB55C00BB6885 /* TranslationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289217E82ADBB55C00BB6885 /* TranslationViewModel.swift */; };
+		289217ED2ADD662C00BB6885 /* AlertBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289217EC2ADD662C00BB6885 /* AlertBuilder.swift */; };
 		28C69FFA2AD4364200B4A8A9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C69FF92AD4364200B4A8A9 /* AppDelegate.swift */; };
 		28C69FFC2AD4364200B4A8A9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C69FFB2AD4364200B4A8A9 /* SceneDelegate.swift */; };
 		28C69FFE2AD4364200B4A8A9 /* TranslationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C69FFD2AD4364200B4A8A9 /* TranslationViewController.swift */; };
@@ -44,6 +45,7 @@
 		289217E42ADAFF9D00BB6885 /* LanguageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageType.swift; sourceTree = "<group>"; };
 		289217E62ADB245E00BB6885 /* TranslationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationModel.swift; sourceTree = "<group>"; };
 		289217E82ADBB55C00BB6885 /* TranslationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationViewModel.swift; sourceTree = "<group>"; };
+		289217EC2ADD662C00BB6885 /* AlertBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertBuilder.swift; sourceTree = "<group>"; };
 		28C69FF62AD4364200B4A8A9 /* Camera-Translate-App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Camera-Translate-App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		28C69FF92AD4364200B4A8A9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		28C69FFB2AD4364200B4A8A9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 				28C69FFD2AD4364200B4A8A9 /* TranslationViewController.swift */,
 				28899C7F2AD544D500708D7B /* TranslationView.swift */,
 				289217CC2AD9114100BB6885 /* PaddingLabel.swift */,
+				289217EC2ADD662C00BB6885 /* AlertBuilder.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -266,6 +269,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				289217ED2ADD662C00BB6885 /* AlertBuilder.swift in Sources */,
 				289217DE2ADA699700BB6885 /* PapagoAPI.swift in Sources */,
 				289217E72ADB245E00BB6885 /* TranslationModel.swift in Sources */,
 				289217E32ADA6ABA00BB6885 /* NetworkError.swift in Sources */,
