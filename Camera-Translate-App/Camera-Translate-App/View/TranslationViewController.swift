@@ -84,7 +84,13 @@ final class TranslationViewController: UIViewController {
                 try dataScanner.startScanning()
                 startFetchDelayTimer()
             } else {
-                print("카메라 권한이 필요합니다")
+                let alert = AlertBuilder()
+                    .setTitle("권한 요청")
+                    .setMessage("실시간 번역을 위해 설정에서 카메라 권한을 허용해 주세요.")
+                    .addAction(title: "확인", style: .default)
+                    .build()
+                
+                present(alert, animated: true)
             }
         } catch {
             print(error.localizedDescription)
