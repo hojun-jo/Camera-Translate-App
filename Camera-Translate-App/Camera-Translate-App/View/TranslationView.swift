@@ -83,7 +83,6 @@ final class TranslationView: UIView {
     }()
     
     weak var delegate: TranslationViewDelegate?
-    private var isPaused = false
     
     init() {
         super.init(frame: .zero)
