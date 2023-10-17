@@ -66,6 +66,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		282B1DEC2ADE63BE003A28A2 /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				289217CC2AD9114100BB6885 /* PaddingLabel.swift */,
+				289217EC2ADD662C00BB6885 /* AlertBuilder.swift */,
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
 		28899C7A2AD53C5600708D7B /* Application */ = {
 			isa = PBXGroup;
 			children = (
@@ -89,11 +98,10 @@
 		28899C7C2AD53C7200708D7B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				282B1DEC2ADE63BE003A28A2 /* Component */,
 				28C6A0042AD4364300B4A8A9 /* LaunchScreen.storyboard */,
 				28C69FFD2AD4364200B4A8A9 /* TranslationViewController.swift */,
 				28899C7F2AD544D500708D7B /* TranslationView.swift */,
-				289217CC2AD9114100BB6885 /* PaddingLabel.swift */,
-				289217EC2ADD662C00BB6885 /* AlertBuilder.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
